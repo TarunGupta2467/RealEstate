@@ -1,0 +1,16 @@
+# Remove the question mark from the request but maintain the query string
+RewriteEngine On
+
+# Uncomment the following line if your public folder isn't the web server's root
+# RewriteBase /
+
+ 
+#RewriteCond %{SCRIPT_FILENAME} !-d
+#RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ index.php?url=$0 [QSA,PT]
+#RewriteRule ^public/(.*)$ public/index.php?url=$1 [QSA,PT]
+
